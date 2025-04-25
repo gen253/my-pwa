@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>パソコン教室</title>
+<!-- PWA対応のためのタグ -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0071e3">
+<link rel="apple-touch-icon" href="icons/icon-192x192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+body {
+font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+margin: 0;
+padding: 0;
+background-color: #f5f5f7;
+}
+.container {
+max-width: 800px;
+margin: 0 auto;
+padding: 20px;
+}
+header {
+background-color: #0071e3;
+color: white;
+padding: 15px 0;
+text-align: center;
+margin-bottom: 20px;
+border-radius: 10px;
+}
+.course-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 15px;
+margin-bottom: 20px;
+}
+.course-item {
+background-color: white;
+border-radius: 10px;
+padding: 20px;
+text-align: center;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+transition: transform 0.2s;
+}
+.course-item:active {
+transform: scale(0.98);
+background-color: #f0f0f0;
+}
+.back-button {
+background-color: #0071e3;
+color: white;
+border: none;
+padding: 10px 20px;
+border-radius: 20px;
+font-size: 16px;
+margin-bottom: 20px;
+display: none;
+}
+.back-button:active {
+background-color: #005bbf;
+}
+.course-detail {
+display: none;
+}
+.course-list {
+background-color: white;
+border-radius: 10px;
+padding: 15px;
+margin-bottom: 15px;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+h2 {
+margin-top: 0;
+color: #1d1d1f;
+}
+p {
+color: #515154;
+line-height: 1.5;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>パソコン教室</h1>
+</header>
+
+    <button id="backButton" class="back-button">戻る</button>
+
+    <!-- トップページ（コース一覧） -->
+    <div id="mainPage">
+        <h2>講座一覧</h2>
+        <div class="course-grid">
+            <div class="course-item" data-course="word">
+                <h3>Word講座</h3>
+                <p>文書作成の基本から応用まで</p>
+            </div>
+            <div class="course-item" data-course="excel">
+                <h3>Excel講座</h3>
+                <p>表計算とデータ分析の技術</p>
+            </div>
+            <div class="course-item" data-course="powerpoint">
+                <h3>PowerPoint講座</h3>
+                <p>効果的なプレゼンテーション作成</p>
+            </div>
+            <div class="course-item" data-course="internet">
+                <h3>インターネット活用講座</h3>
+                <p>安全なネット利用とメール</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Word講座詳細ページ -->
+    <div id="wordPage" class="course-detail">
+        <h2>Word講座一覧</h2>
+        <div class="course-list">
+            <h3>Word基礎</h3>
+            <p>文書作成の基本操作を学びます。</p>
+            <p>日時: 毎週月曜日 10:00〜12:00</p>
+            <p>受講料: 5,000円（教材費込）</p>
+        </div>
+        <div class="course-list">
+            <h3>Word応用</h3>
+            <p>表や画像の挿入、スタイルの活用など応用技術を習得します。</p>
+            <p>日時: 毎週水曜日 13:00〜15:00</p>
+            <p>受講料: 6,000円（教材費込）</p>
+        </div>
+    </div>
+
+    <!-- Excel講座詳細ページ -->
+    <div id="excelPage" class="course-detail">
+        <h2>Excel講座一覧</h2>
+        <div class="course-list">
+            <h3>Excel基礎</h3>
+            <p>表作成と基本関数の使い方を学びます。</p>
+            <p>日時: 毎週火曜日 10:00〜12:00</p>
+            <p>受講料: 5,000円（教材費込）</p>
+        </div>
+        <div class="course-list">
+            <h3>Excel関数マスター</h3>
+            <p>実務で役立つ様々な関数とその活用法を学びます。</p>
+            <p>日時: 毎週木曜日 13:00〜15:00</p>
+            <p>受講料: 6,000円（教材費込）</p>
+        </div>
+    </div>
+
+    <!-- PowerPoint講座詳細ページ -->
+    <div id="powerpointPage" class="course-detail">
+        <h2>PowerPoint講座一覧</h2>
+        <div class="course-list">
+            <h3>PowerPoint基礎</h3>
+            <p>スライド作成の基本を学びます。</p>
+            <p>日時: 毎週金曜日 10:00〜12:00</p>
+            <p>受講料: 5,000円（教材費込）</p>
+        </div>
+    </div>
+
+    <!-- インターネット講座詳細ページ -->
+    <div id="internetPage" class="course-detail">
+        <h2>インターネット活用講座一覧</h2>
+        <div class="course-list">
+            <h3>インターネット基礎</h3>
+            <p>安全なインターネット利用とメールの基本を学びます。</p>
+            <p>日時: 毎週土曜日 10:00〜12:00</p>
+            <p>受講料: 4,000円（教材費込）</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ページ切り替え機能
+    document.addEventListener('DOMContentLoaded', function() {
+        const courseItems = document.querySelectorAll('.course-item');
+        const backButton = document.getElementById('backButton');
+        const mainPage = document.getElementById('mainPage');
+        const coursePages = document.querySelectorAll('.course-detail');
+
+        // コース項目をクリックした時の処理
+        courseItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const course = this.getAttribute('data-course');
+                const targetPage = document.getElementById(course + 'Page');
+
+                // メインページを非表示
+                mainPage.style.display = 'none';
+
+                // 対象のコースページを表示
+                coursePages.forEach(page => {
+                    page.style.display = 'none';
+                });
+                targetPage.style.display = 'block';
+
+                // 戻るボタンを表示
+                backButton.style.display = 'block';
+            });
+        });
+
+        // 戻るボタンをクリックした時の処理
+        backButton.addEventListener('click', function() {
+            // すべてのコースページを非表示
+            coursePages.forEach(page => {
+                page.style.display = 'none';
+            });
+
+            // メインページを表示
+            mainPage.style.display = 'block';
+
+            // 戻るボタンを非表示
+            this.style.display = 'none';
+        });
+    });
+
+    // iOSのダブルタップズームを無効化
+    document.addEventListener('touchend', function(event) {
+        event.preventDefault();
+    }, false);
+</script>
+<script>
+// サービスワーカーの登録
+if ('serviceWorker' in navigator) {
+window.addEventListener('load', function() {
+navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+console.log('ServiceWorker登録成功:', registration.scope);
+}, function(err) {
+console.log('ServiceWorker登録失敗:', err);
+});
+});
+}
+</script>
+</body>
+</html>
